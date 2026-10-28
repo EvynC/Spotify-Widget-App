@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="Dark">
+<html lang="en" data-theme="midnight">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,31 +8,25 @@
 </head>
 <body>
     <main class="widget">
-
         <header class="widget-header">
             <h1>Spotify Overlay Widget</h1>
-
             <div class="header-actions">
                 <select id="theme-select" aria-label="Color theme">
-                    <option value="Dark">Midnight</option>
-                    <option value="Midnight">Purple</option>
-                    <option value="Ocean">Ocean</option>
-                    <option value="Rose">Rose</option>
+                    <option value="midnight">Midnight</option>
+                    <option value="purple">Purple</option>
+                    <option value="ocean">Ocean</option>
+                    <option value="rose">Rose</option>
                 </select>
-
-                <button id="settings-button" class="icon-button"
-                        aria-label="Open settings" title="Settings">
-                    ⚙
-                </button>
+                <button id="settings-button" class="icon-button" type="button"
+                    aria-label="Open settings" title="Settings">⚙</button>
             </div>
         </header>
 
-        <!-- Settings -->
         <section id="settings-panel" class="settings-panel" hidden>
             <div class="panel-heading">
                 <h2>Settings</h2>
-                <button id="close-settings-button" class="icon-button"
-                        aria-label="Close settings">✕</button>
+                <button id="close-settings-button" class="icon-button" type="button"
+                    aria-label="Close settings">✕</button>
             </div>
 
             <div class="setting-group">
@@ -47,12 +41,10 @@
 
             <div class="setting-group">
                 <h3>Playback controls</h3>
-
                 <label class="setting-toggle">
                     <span>Show shuffle button</span>
                     <input type="checkbox" id="show-shuffle" checked>
                 </label>
-
                 <label class="setting-toggle">
                     <span>Show repeat button</span>
                     <input type="checkbox" id="show-repeat" checked>
@@ -61,58 +53,36 @@
 
             <div class="setting-group">
                 <h3>Keyboard shortcuts</h3>
-                <p class="setting-description">
-                    Click a key to reassign it. Shortcuts work while
-                    this app is focused.
-                </p>
-
+                <p class="setting-description">Click a key to reassign it. Shortcuts work while this app is focused.</p>
                 <div class="shortcut-row">
                     <label for="shortcut-play">Play / pause</label>
-                    <button class="shortcut-key" id="shortcut-play"
-                            data-action="playPause">Space</button>
+                    <button class="shortcut-key" id="shortcut-play" data-action="playPause" type="button">Space</button>
                 </div>
-
                 <div class="shortcut-row">
                     <label for="shortcut-previous">Previous track</label>
-                    <button class="shortcut-key" id="shortcut-previous"
-                            data-action="previous">←</button>
+                    <button class="shortcut-key" id="shortcut-previous" data-action="previous" type="button">←</button>
                 </div>
-
                 <div class="shortcut-row">
                     <label for="shortcut-next">Next track</label>
-                    <button class="shortcut-key" id="shortcut-next"
-                            data-action="next">→</button>
+                    <button class="shortcut-key" id="shortcut-next" data-action="next" type="button">→</button>
                 </div>
-
                 <div class="shortcut-row">
                     <label for="shortcut-shuffle">Toggle shuffle</label>
-                    <button class="shortcut-key" id="shortcut-shuffle"
-                            data-action="shuffle">S</button>
+                    <button class="shortcut-key" id="shortcut-shuffle" data-action="shuffle" type="button">S</button>
                 </div>
-
                 <div class="shortcut-row">
                     <label for="shortcut-repeat">Toggle repeat</label>
-                    <button class="shortcut-key" id="shortcut-repeat"
-                            data-action="repeat">R</button>
+                    <button class="shortcut-key" id="shortcut-repeat" data-action="repeat" type="button">R</button>
                 </div>
-
-                <p id="shortcut-status" class="setting-description"
-                   role="status" aria-live="polite">
-                    Click a shortcut to change it.
-                </p>
-
-                <button id="reset-shortcuts-button" class="secondary-button">
-                    Reset shortcuts
-                </button>
+                <p id="shortcut-status" class="setting-description" role="status" aria-live="polite">Click a shortcut to change it.</p>
+                <button id="reset-shortcuts-button" class="secondary-button" type="button">Reset shortcuts</button>
             </div>
         </section>
 
-        <!-- Currently playing -->
         <section class="track-info">
             <img id="album-art"
-                 src="https://placehold.co/400x400/181818/ffffff?text=Album+Art"
-                 alt="Album cover">
-
+                src="https://placehold.co/400x400/181818/ffffff?text=Album+Art"
+                alt="Album cover">
             <div class="track-details">
                 <h2 id="track-name">Unfuckwittable</h2>
                 <p id="track-artist">Kid Cudi</p>
@@ -120,44 +90,33 @@
             </div>
         </section>
 
-        <!-- Progress -->
-        <section class="playback-progress">
-            <input id="progress-bar" type="range"
-                   min="0" max="100" value="35"
-                   aria-label="Track progress">
-
+        <section class="playback-progress" aria-label="Track progress">
+            <input id="progress-bar" type="range" min="0" max="100" value="35"
+                aria-label="Track progress">
             <div class="timestamps">
                 <span id="current-time">1:18</span>
                 <span id="duration">3:42</span>
             </div>
         </section>
 
-        <!-- Playback controls -->
         <section class="playback-controls" aria-label="Playback controls">
-            <button id="shuffle-button" class="icon-button"
-                    aria-label="Toggle shuffle" aria-pressed="false"
-                    title="Shuffle">⤨</button>
-
-            <button id="previous-button" class="icon-button"
-                    aria-label="Previous track" title="Previous track">|◀</button>
-
-            <button id="play-pause-button"
-                    aria-label="Play" title="Play">▶</button>
-
-            <button id="next-button" class="icon-button"
-                    aria-label="Next track" title="Next track">▶|</button>
-
-            <button id="repeat-button" class="icon-button"
-                    aria-label="Toggle repeat" aria-pressed="false"
-                    title="Repeat off">↻</button>
+            <button id="shuffle-button" class="icon-button" type="button"
+                aria-label="Toggle shuffle" aria-pressed="false" title="Shuffle">⤨</button>
+            <button id="previous-button" class="icon-button" type="button"
+                aria-label="Previous track" title="Previous track">|◀</button>
+            <button id="play-pause-button" type="button"
+                aria-label="Play" title="Play">▶</button>
+            <button id="next-button" class="icon-button" type="button"
+                aria-label="Next track" title="Next track">▶|</button>
+            <button id="repeat-button" class="icon-button" type="button"
+                aria-label="Toggle repeat" aria-pressed="false" title="Repeat off">↻</button>
         </section>
 
-        <!-- Queue and lyrics -->
         <nav class="widget-navigation" aria-label="Player sections">
-            <button class="tab-button active" data-panel="queue-panel"
-                    aria-selected="true">Queue</button>
-            <button class="tab-button" data-panel="lyrics-panel"
-                    aria-selected="false">Lyrics</button>
+            <button class="tab-button active" type="button" data-panel="queue-panel"
+                aria-selected="true">Queue</button>
+            <button class="tab-button" type="button" data-panel="lyrics-panel"
+                aria-selected="false">Lyrics</button>
         </nav>
 
         <section id="queue-panel" class="content-panel">
@@ -173,7 +132,7 @@
                 <li>
                     <div class="queue-track-info">
                         <span class="queue-track-name">Trance</span>
-                        <span class="queue-track-artist">Travis Scott & Young Thug</span>
+                        <span class="queue-track-artist">Travis Scott &amp; Young Thug</span>
                     </div>
                     <span class="queue-track-duration">3:14</span>
                 </li>
@@ -182,17 +141,14 @@
 
         <section id="lyrics-panel" class="content-panel" hidden>
             <h2>Lyrics</h2>
-            <p id="lyrics-content">
-                Lyrics will appear here when connected to a lyrics provider.
-            </p>
+            <p id="lyrics-content">Lyrics will appear here when connected to a lyrics provider.</p>
         </section>
 
         <footer class="widget-footer">
             <span id="connection-status">Demo mode · Shortcuts enabled</span>
         </footer>
-
     </main>
 
-    <script src="renderer.js"></script>
+    <script src="./renderer.js"></script>
 </body>
 </html>

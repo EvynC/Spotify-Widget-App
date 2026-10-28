@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from fastapi.middleware.cors import CORSMiddleware  # TEMP DONT NEED LATER
+from fastapi.middleware.cors import CORSMiddleware
+
+import spotify  # TEMP DONT NEED LATER
 
 """
 Backend entry point.
@@ -16,12 +18,12 @@ This file connects the components together. It should not contain
 the implementation of individual Spotify operations or UI logic.
 """
 
-# SET UP OTHER DEPENDENCIES AND SERVICES HERE (SPOTIFY CLIENT, ETC.)
 
 
 # Network and API layer
 
 app = FastAPI()
+sp = spotify.get_spotify_client()  # Initialize the Spotify client
 
 app.add_middleware(
     CORSMiddleware,
@@ -41,15 +43,5 @@ class ShuffleRequest(BaseModel):
 @app.post("/player/shuffle")
 def shuffle(request: ShuffleRequest):
     # player.set_shuffle(request.enabled)
-    print(f"Shuffle set to: {request.enabled}")  # Placeholder for actual implementation
+    print(f"Shuffle set to: {request.enabled}")  
     return {"success": True}
-
-
-# Construct this with your authenticated Spotify service.
-# player = PlayerController(...)  # Pass the SpotifyService instance here
-
-
-# @app.post("/player/shuffle")
-# def shuffle(enabled: bool):
-#     player.set_shuffle(enabled)
-#     return {"success": True}

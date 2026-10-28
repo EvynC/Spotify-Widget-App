@@ -1,9 +1,8 @@
 /* =========================
    Themes
-   ========================= */
-
+   =========================*/
 :root,
-[data-theme="Dark"] {
+[data-theme="midnight"] {
     color-scheme: dark;
     --background: #000000;
     --surface: #181818;
@@ -14,7 +13,8 @@
     --border: #333333;
 }
 
-[data-theme="Midnight"] {
+[data-theme="purple"] {
+    color-scheme: dark;
     --background: #130f1f;
     --surface: #241b38;
     --surface-hover: #36274e;
@@ -24,7 +24,8 @@
     --border: #403052;
 }
 
-[data-theme="Ocean"] {
+[data-theme="ocean"] {
+    color-scheme: dark;
     --background: #071923;
     --surface: #102c3a;
     --surface-hover: #194254;
@@ -34,7 +35,8 @@
     --border: #234654;
 }
 
-[data-theme="Rose"] {
+[data-theme="rose"] {
+    color-scheme: dark;
     --background: #211116;
     --surface: #351c26;
     --surface-hover: #492633;
@@ -44,10 +46,9 @@
     --border: #51303c;
 }
 
-/* =========================z 
+/* =========================
    Global
-   ========================= */
-
+   =========================*/
 * {
     box-sizing: border-box;
 }
@@ -84,6 +85,10 @@ input:focus-visible {
     outline-offset: 3px;
 }
 
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
 .widget {
     display: flex;
     flex-direction: column;
@@ -93,10 +98,12 @@ input:focus-visible {
     margin: 0 auto;
 }
 
+[hidden] {
+    display: none !important;
+}
 /* =========================
    Header
-   ========================= */
-
+   =========================*/
 .widget-header {
     display: flex;
     align-items: center;
@@ -143,8 +150,7 @@ input:focus-visible {
 
 /* =========================
    Settings panel
-   ========================= */
-
+   =========================*/
 .settings-panel {
     display: flex;
     flex-direction: column;
@@ -153,10 +159,6 @@ input:focus-visible {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 10px;
-}
-
-.settings-panel[hidden] {
-    display: none;
 }
 
 .panel-heading {
@@ -208,8 +210,6 @@ input:focus-visible {
     cursor: pointer;
 }
 
-/* Keyboard shortcuts */
-
 .shortcut-row {
     display: flex;
     align-items: center;
@@ -248,8 +248,7 @@ input:focus-visible {
 
 /* =========================
    Track information
-   ========================= */
-
+   =========================*/
 .track-info {
     display: flex;
     flex-direction: column;
@@ -292,8 +291,7 @@ input:focus-visible {
 
 /* =========================
    Progress
-   ========================= */
-
+   =========================*/
 .playback-progress {
     display: flex;
     flex-direction: column;
@@ -311,14 +309,19 @@ input:focus-visible {
 .timestamps {
     display: flex;
     justify-content: space-between;
+    gap: 8px;
     color: var(--text-secondary);
     font-size: 11px;
+    font-variant-numeric: tabular-nums;
+    }
+    
+    .timestamps span {
+        white-space: nowrap;
 }
 
 /* =========================
    Playback controls
-   ========================= */
-
+   =========================*/
 .playback-controls {
     display: flex;
     align-items: center;
@@ -353,8 +356,7 @@ input:focus-visible {
 
 /* =========================
    Queue / lyrics navigation
-   ========================= */
-
+   =========================*/
 .widget-navigation {
     display: flex;
     justify-content: center;
@@ -378,14 +380,9 @@ input:focus-visible {
 
 /* =========================
    Queue and lyrics
-   ========================= */
-
+   =========================*/
 .content-panel {
     min-width: 0;
-}
-
-.content-panel[hidden] {
-    display: none;
 }
 
 .content-panel h2 {
@@ -445,8 +442,7 @@ input:focus-visible {
 
 /* =========================
    Footer and scrollbars
-   ========================= */
-
+   =========================*/
 .widget-footer {
     padding-top: 5px;
     border-top: 1px solid var(--border);
