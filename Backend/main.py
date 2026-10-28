@@ -1,41 +1,55 @@
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
-import json
+from fastapi import FastAPI
+from pydantic import BaseModel
+from fastapi.middleware.cors import CORSMiddleware  # TEMP DONT NEED LATER
 
-def load_config():
-    with open("config.json", "r") as f:
-        config = json.load(f)
-    return config
+"""
+Backend entry point.
 
+Responsibilities:
+- Initialize the Spotify client and required services.
+- Create the PlayerController and other application components.
+- Define API endpoints that receive commands from the frontend.
+- Return results and errors to the frontend.
+- Start the backend server.
 
-def get_spotify_client():
-    sp = spotipy.Spotify(
-        auth_manager=SpotifyOAuth(
-            client_id=client_id,
-            client_secret=client_secret,
-            redirect_uri=redirect_uri,
-            scope="user-library-read",
-        )
-    )
+This file connects the components together. It should not contain
+the implementation of individual Spotify operations or UI logic.
+"""
 
-    return sp
-
-def main(sp):
+# SET UP OTHER DEPENDENCIES AND SERVICES HERE (SPOTIFY CLIENT, ETC.)
 
 
-    # tracks = sp.current_user_saved_tracks()
+# Network and API layer
 
-    # for item in tracks["items"]:
-    #     track = item["track"]
-    #     print(track["name"])
-    pass 
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Local development only
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+@app.get("/test")
+def test_connection():
+    return {"message": "Hello from Python!"}
 
 
-if __name__ == "__main__":
-    config = load_config()
-    client_id = config["spotifyClientId"]
-    client_secret = config["spotifyClientSecret"]
-    redirect_uri = config["spotifyRedirectUri"]
+class ShuffleRequest(BaseModel):
+    enabled: bool
 
-    sp = get_spotify_client()
-    main(sp)
+@app.post("/player/shuffle")
+def shuffle(request: ShuffleRequest):
+    # player.set_shuffle(request.enabled)
+    print(f"Shuffle set to: {request.enabled}")  # Placeholder for actual implementation
+    return {"success": True}
+
+
+# Construct this with your authenticated Spotify service.
+# player = PlayerController(...)  # Pass the SpotifyService instance here
+
+
+# @app.post("/player/shuffle")
+# def shuffle(enabled: bool):
+#     player.set_shuffle(enabled)
+#     return {"success": True}

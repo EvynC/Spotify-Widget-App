@@ -1,5 +1,5 @@
 {
     "spotifyClientId": "6a28e350488b460dada5235ef7385c6c",
-    "spotifyClientSecret": "5aacfc958acf4407818cc2f305cc6b8b",
+    "spotifyClientSecret": "09f96f24d58b4daea4cdf9188904723f",
     "spotifyRedirectUri": "http://127.0.0.1:8888/callback"
 }

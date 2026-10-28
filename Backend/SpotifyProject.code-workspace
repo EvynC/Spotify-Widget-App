@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "Spotify-Widget-App",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"python-envs.defaultEnvManager": "ms-python.python:system"
+	}
+}
